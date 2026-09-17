@@ -12,7 +12,7 @@ class Transactions:
         return self.payment - self.item.price 
 
     def change_breakdown(self) -> dict:
-        remaining = int(self.change())
+        remaining = round(self.change())
         denominations = [20, 10, 5, 1]
         breakdown = {}
         for d in denominations:

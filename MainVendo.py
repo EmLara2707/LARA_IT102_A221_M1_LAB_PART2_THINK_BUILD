@@ -48,6 +48,9 @@ if st.button("Buy", type="primary"):
     if transaction.noChange():
         change = transaction.change()
         st.success(f"✅ Dispensing {selected_item.container}. Your change is ₱{change:.2f}")
-        transaction.change_breakdown()
+        breakdown = transaction.change_breakdown()
+        st.write(f"**Change Breakdown:**")
+        for denom, count in breakdown.items():
+            st.write(f"₱{denom}: {count}")
     else:
         st.error("❌ Insufficient payment.")
